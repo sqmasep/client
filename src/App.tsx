@@ -3,8 +3,19 @@ import { Container, createTheme, ThemeProvider } from "@mui/material";
 import { Query, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import trpc from "./trpc";
+import { httpBatchLink } from "@trpc/react-query";
 
 const queryClient = new QueryClient();
+const trpcClient = trpc.createClient({
+  links: [
+    httpBatchLink({
+      url: "http://localhost:4321/trpc/",
+    }),
+  ],
+});
 
 const theme = createTheme({
   palette: {
@@ -33,11 +44,15 @@ const theme = createTheme({
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>
-        <Routes>
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </QueryClientProvider>
+      <trpc.Provider client={trpcClient} queryClient={queryClient}>
+        <QueryClientProvider client={queryClient}>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+          </Routes>
+          <Footer />
+        </QueryClientProvider>
+      </trpc.Provider>
     </ThemeProvider>
   );
 };
