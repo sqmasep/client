@@ -8,10 +8,12 @@ import { Query, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
-import SignIn from "./pages/user/Signin";
+import SignIn from "./pages/user/Signup";
 import Login from "./pages/user/Login";
 import "./globals.css";
 import io from "socket.io-client";
+import { CountryProvider } from "./contexts/CountryContext";
+import Sidebar from "./components/layout/Sidebar";
 
 const queryClient = new QueryClient();
 const trpcClient = trpc.createClient({
@@ -60,14 +62,17 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools />
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/become-a-bad-guy' element={<SignIn />} />
-            <Route path='/put-on-your-red-blazer' element={<Login />} />
-          </Routes>
-          <Footer />
+          <CountryProvider>
+            <ReactQueryDevtools />
+            <Navbar />
+            {/* <Sidebar /> */}
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/become-a-bad-guy' element={<SignIn />} />
+              <Route path='/put-on-your-red-blazer' element={<Login />} />
+            </Routes>
+            <Footer />
+          </CountryProvider>
         </QueryClientProvider>
       </trpc.Provider>
     </ThemeProvider>

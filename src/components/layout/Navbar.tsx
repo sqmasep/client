@@ -2,10 +2,9 @@ import { Box, Button, Container, Link, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { socket } from "../../App";
+import NbUsers from "../ui/nbUsers";
 
 const Navbar: React.FC = () => {
-  const [nbUsers, setNbUsers] = useState(0);
-  socket.on("nbUsers", nbUsers => setNbUsers(nbUsers));
   return (
     <Container>
       {/* <Logo /> */}
@@ -14,17 +13,7 @@ const Navbar: React.FC = () => {
           <Typography>Mafia RP</Typography>
         </Link>
         <Stack spacing={8}>
-          <Stack spacing={1}>
-            <Box
-              sx={{
-                borderRadius: "50%",
-                width: "1em",
-                height: "1em",
-                backgroundColor: "red",
-              }}
-            />
-            <Typography>{nbUsers}</Typography>
-          </Stack>
+          <NbUsers />
           <Stack spacing={2}>
             <Button
               variant='outlined'

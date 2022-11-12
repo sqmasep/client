@@ -1,7 +1,8 @@
+import { Container } from "@mui/material";
 import React from "react";
 
 const Login: React.FC = () => {
-  return <div>login</div>;
+  return <Container>login</Container>;
 };
 
 export default Login;
