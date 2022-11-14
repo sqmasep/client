@@ -1,7 +1,14 @@
 import React, { createContext, useContext } from "react";
+import trpc from "../trpc";
+
+const UserContext = createContext({});
 
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  return <></>;
+  // trpc.user.
+
+  return <UserContext.Provider value={{}}>{children}</UserContext.Provider>;
 };
+
+export const useUser = () => useContext(UserContext);

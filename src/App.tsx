@@ -15,6 +15,7 @@ import io from "socket.io-client";
 import { CountryProvider } from "./contexts/CountryContext";
 import Sidebar from "./components/layout/Sidebar";
 import Marquee from "./components/layout/Marquee";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 const trpcClient = trpc.createClient({
@@ -65,7 +66,7 @@ const App: React.FC = () => {
         <QueryClientProvider client={queryClient}>
           <CountryProvider>
             <ReactQueryDevtools />
-            <Marquee />
+            {/* <Marquee /> */}
             <Navbar />
             {/* <Sidebar /> */}
             <Routes>
@@ -73,6 +74,7 @@ const App: React.FC = () => {
               <Route path='/become-a-bad-guy' element={<SignIn />} />
               <Route path='/put-on-your-red-blazer' element={<Login />} />
               <Route path='/profile' element={<Login />} />
+              <Route path='*' element={<NotFound />} />
             </Routes>
             <Footer />
           </CountryProvider>

@@ -86,6 +86,7 @@ const Signup: React.FC = () => {
                     </MenuItem>
                   ))}
                 </Select>
+                {touched.originLocation && errors.originLocation}
               </FormControl>
               <Button type='submit'>yes</Button>
             </Form>
