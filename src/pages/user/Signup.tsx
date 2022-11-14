@@ -1,4 +1,14 @@
-import { Container, TextField } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Chip,
+  Container,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
@@ -6,8 +16,23 @@ import trpc from "../../trpc";
 import { createUser } from "../../../../server/data/formSchemas";
 import { useCountry } from "../../contexts/CountryContext";
 
+const form: {
+  name: keyof typeof createUser.initialValues;
+  label: string;
+}[] = [
+  { name: "email", label: "Email" },
+  { name: "username", label: "Username" },
+  { name: "password", label: "Password" },
+  { name: "confirmPassword", label: "Confirm password" },
+];
+
 const Signup: React.FC = () => {
   const { countries } = useCountry();
+  const selectCountriesOptions = countries?.map(country => ({
+    name: country.name.common,
+    flag: country.flags.svg,
+    code: country.cca2,
+  }));
   const mutation = trpc.user.create.useMutation({});
 
   return (
@@ -15,22 +40,58 @@ const Signup: React.FC = () => {
       <Formik
         initialValues={createUser.initialValues}
         validationSchema={toFormikValidationSchema(createUser.schema)}
-        onSubmit={() => {
-          console.log();
+        onSubmit={val => {
+          mutation.mutate(val);
         }}
       >
-        {({ values, errors, isSubmitting, touched }) => {
+        {({
+          values,
+          errors,
+          touched,
+          handleSubmit,
+          handleBlur,
+          handleChange,
+        }) => {
           return (
-            <Form>
-              <Field as={TextField} label='Email' name='email' />
-              {touched.email && <ErrorMessage name='email' />}
-              <pre>{JSON.stringify(values, null, 2)}</pre>
+            <Form onSubmit={handleSubmit}>
+              {form.map(el => (
+                <Field
+                  as={TextField}
+                  error={touched[el.name] && !!errors[el.name]}
+                  helperText={touched[el.name] && errors[el.name]}
+                  label={el.label}
+                  name={el.name}
+                />
+              ))}
+              <FormControl>
+                <InputLabel id='select-country-label'>
+                  Country of start
+                </InputLabel>
+                <Select
+                  labelId='select-country-label'
+                  id='select-country'
+                  label='Country of start'
+                  value={values.originLocation}
+                  onBlur={handleBlur}
+                  name='originLocation'
+                  onChange={handleChange}
+                >
+                  {selectCountriesOptions?.map(country => (
+                    <MenuItem value={country.code} key={country.name}>
+                      <Chip
+                        avatar={<Avatar src={country.flag} />}
+                        label={country.name}
+                        variant='outlined'
+                      />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <Button type='submit'>yes</Button>
             </Form>
           );
         }}
       </Formik>
-      countries:{" "}
-      <pre>{JSON.stringify(countries?.map(e => e.name).length, null, 2)}</pre>
     </Container>
   );
 };

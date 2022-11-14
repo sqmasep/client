@@ -14,22 +14,9 @@ export const CountryProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   // get corresponding/filtered countries data from an API via code
-  const { data: countriesData } = useQuery(
-    ["countries"],
-    () => {
-      const url = new URLSearchParams([
-        ["codes", availableCountries],
-      ] as string[][]);
-      return axios.get(`https://restcountries.com/v3.1/alpha?codes=${url}`);
-    },
-    {
-      enabled: !!availableCountries,
-      staleTime: Infinity,
-    }
-  );
 
   return (
-    <CountryContext.Provider value={{ countries: countriesData?.data }}>
+    <CountryContext.Provider value={{ countries: availableCountries }}>
       {children}
     </CountryContext.Provider>
   );
