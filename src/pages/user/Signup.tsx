@@ -56,6 +56,7 @@ const Signup: React.FC = () => {
             <Form onSubmit={handleSubmit}>
               {form.map(el => (
                 <Field
+                  key={el.name}
                   as={TextField}
                   error={touched[el.name] && !!errors[el.name]}
                   helperText={touched[el.name] && errors[el.name]}

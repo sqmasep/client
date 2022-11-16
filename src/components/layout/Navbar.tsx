@@ -2,7 +2,7 @@ import { Box, Button, Container, Link, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { socket } from "../..";
-import NbUsers from "../ui/nbUsers";
+import NbUsers from "../ui/NbUsers";
 
 const Navbar: React.FC = () => {
   return (
