@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { socket } from "../../App";
+import { socket } from "../..";
 import useNbUsers from "../../hooks/nbUsers";
 
 const NbUsers: React.FC = () => {

@@ -10,6 +10,9 @@ import { CountryProvider } from "./contexts/CountryContext";
 import UserProvider from "./contexts/UserContext";
 import trpc from "./trpc";
 
+export let token: string =
+  "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYzNzM5NTdiMjZiZjkyYjFiYmJhOTQ1MSJ9.XcYgOFwI68LkLKxR3PKMOe8Zy0y3oWDwLuLb_3PX47E";
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -18,6 +21,9 @@ const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
       url: "http://localhost:4321/trpc/",
+      headers: () => ({
+        Authorization: token,
+      }),
     }),
   ],
 });
