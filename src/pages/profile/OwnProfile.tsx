@@ -1,7 +1,7 @@
 import { Rating } from "@mui/material";
 import React from "react";
 import { useUser } from "../../contexts/UserContext";
-import { Favorite, FavoriteOutlined } from "@mui/icons-material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const OwnProfile: React.FC = () => {
   const { user } = useUser();
@@ -13,11 +13,10 @@ const OwnProfile: React.FC = () => {
       <Rating
         disabled
         icon={<Favorite />}
-        emptyIcon={<FavoriteOutlined />}
-        // {/* @ts-ignore */}
-        value={user?.status.health / 2}
+        emptyIcon={<FavoriteBorder />}
+        value={user?.status.health / 100}
         max={10}
-        precision={100}
+        precision={0.01}
       />
     </>
   );

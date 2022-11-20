@@ -14,6 +14,7 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [a, setA] = useLocalStorage("token", token);
+  console.log("token a: ", a);
   const { data } = trpc.user.getInfos.useQuery(a, {
     enabled: !!a,
     staleTime: Infinity,
@@ -22,8 +23,8 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <UserContext.Provider
       value={{
-        // isAuth: data?.isAuth,
-        isAuth: true,
+        isAuth: data?.isAuth,
+        // isAuth: true,
         user: data?.user,
       }}
     >

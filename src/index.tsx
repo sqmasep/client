@@ -12,7 +12,7 @@ import theme from "./theme";
 import trpc from "./trpc";
 
 export let token: string =
-  "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoiNjM3Mzk1N2IyNmJmOTJiMWJiYmE5NDUxIiwidXNlcm5hbWUiOiJzcW1hc2VwIiwiZW1haWwiOiJ0a3RAZ21haWwuY29tIn19.0ValqPGEGiH92INJ-Jy8XF2-iKbSkdXJeJxySIcImKI";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YTJhZmFhZDJiYjE2OWM2ZWQyYTdmIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIn0sImlhdCI6MTY2ODk4MzQ2Nn0.CSXYhXZZrWl8JR6Z-wn6iiyd14FklErmZ7Sy_JS5HkE";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
