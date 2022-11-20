@@ -13,6 +13,8 @@ import Marquee from "./components/layout/Marquee";
 import NotFound from "./pages/NotFound";
 import { useUser } from "./contexts/UserContext";
 import CrimeList from "./pages/CrimeList";
+import MessageBox from "./components/layout/MessageBox";
+import { Stack } from "@mui/material";
 import UserProfile from "./pages/profile/UserProfile";
 import OwnProfile from "./pages/profile/OwnProfile";
 
@@ -21,6 +23,7 @@ const App: React.FC = () => {
   return (
     <>
       <ReactQueryDevtools />
+      <MessageBox />
       {/* <Marquee /> */}
       <Navbar />
       {/* <Sidebar /> */}

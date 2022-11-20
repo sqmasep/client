@@ -6,7 +6,11 @@ interface CrimeProps {
 }
 
 const Crime: React.FC<CrimeProps> = ({ children }) => {
-  return <Box>crime</Box>;
+  return (
+    <Box>
+      <img src='https://unsplash.it/500/200' />
+    </Box>
+  );
 };
 
 export default Crime;

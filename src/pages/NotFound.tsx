@@ -3,9 +3,9 @@ import React from "react";
 
 const NotFound: React.FC = () => {
   return (
-    <Box>
+    <Box height='100vh'>
       <Stack>
-        <Typography>404 Page not found</Typography>
+        <Typography variant='h1'>404 Page not found</Typography>
         <Button>Go to homepage</Button>
       </Stack>
     </Box>

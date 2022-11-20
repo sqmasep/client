@@ -12,6 +12,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { socket } from "../..";
 import { useUser } from "../../contexts/UserContext";
 import NbUsers from "../ui/NbUsers";
+import { Notifications } from "@mui/icons-material";
 
 const Navbar: React.FC = () => {
   const { user, isAuth } = useUser();
