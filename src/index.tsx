@@ -11,7 +11,7 @@ import UserProvider from "./contexts/UserContext";
 import trpc from "./trpc";
 
 export let token: string =
-  "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYzNzM5NTdiMjZiZjkyYjFiYmJhOTQ1MSJ9.XcYgOFwI68LkLKxR3PKMOe8Zy0y3oWDwLuLb_3PX47E";
+  "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoiNjM3Mzk1N2IyNmJmOTJiMWJiYmE5NDUxIiwidXNlcm5hbWUiOiJzcW1hc2VwIiwiZW1haWwiOiJ0a3RAZ21haWwuY29tIn19.0ValqPGEGiH92INJ-Jy8XF2-iKbSkdXJeJxySIcImKI";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

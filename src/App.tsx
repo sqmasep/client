@@ -13,6 +13,8 @@ import Marquee from "./components/layout/Marquee";
 import NotFound from "./pages/NotFound";
 import { useUser } from "./contexts/UserContext";
 import CrimeList from "./pages/CrimeList";
+import UserProfile from "./pages/profile/UserProfile";
+import OwnProfile from "./pages/profile/OwnProfile";
 
 const App: React.FC = () => {
   const {} = useUser();
@@ -26,8 +28,9 @@ const App: React.FC = () => {
         <Route path='/' element={<Home />} />
         <Route path='/become-a-bad-guy' element={<SignIn />} />
         <Route path='/put-on-your-red-blazer' element={<Login />} />
-        <Route path='/profile' element={<Login />} />
         <Route path='/crimes' element={<CrimeList />} />
+        <Route path='/profile' element={<OwnProfile />} />
+        <Route path='/profile/:username' element={<UserProfile />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
