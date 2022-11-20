@@ -1,13 +1,12 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { socket } from "../..";
-import useNbUsers from "../../hooks/nbUsers";
+import useNbUsers from "../../hooks/useNbUsers";
 
 const NbUsers: React.FC = () => {
   const nbUsers = useNbUsers();
 
   return (
-    <Stack spacing={1}>
+    <Stack spacing={1} alignItems='center'>
       <Box
         sx={{
           borderRadius: "50%",

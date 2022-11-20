@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { socket } from "..";
+import socket from "../socket";
 
 const useNbUsers = () => {
   const [nbUsers, setNbUsers] = useState(1);

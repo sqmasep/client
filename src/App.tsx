@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -19,7 +19,8 @@ import UserProfile from "./pages/profile/UserProfile";
 import OwnProfile from "./pages/profile/OwnProfile";
 
 const App: React.FC = () => {
-  const {} = useUser();
+  const { isAuth } = useUser();
+
   return (
     <>
       <ReactQueryDevtools />
@@ -29,8 +30,12 @@ const App: React.FC = () => {
       {/* <Sidebar /> */}
       <Routes>
         <Route path='/' element={<Home />} />
+
         <Route path='/become-a-bad-guy' element={<SignIn />} />
-        <Route path='/put-on-your-red-blazer' element={<Login />} />
+        <Route
+          path='/put-on-your-red-blazer'
+          element={isAuth ? <Navigate to='/profile' /> : <Login />}
+        />
         <Route path='/crimes' element={<CrimeList />} />
         <Route path='/profile' element={<OwnProfile />} />
         <Route path='/profile/:username' element={<UserProfile />} />

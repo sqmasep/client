@@ -1,21 +1,14 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { token } from "..";
 import useLocalStorage from "../hooks/useLocalStorage";
 import trpc from "../trpc";
 
 interface UserValues {
   isAuth: boolean | undefined;
-  user:
-    | null
-    | undefined
-    | {
-        id: string;
-        email: string;
-        username: string;
-      };
+  user: unknown;
 }
 
-const UserContext = createContext<UserValues>({ user: null, isAuth: false });
+const UserContext = createContext<UserValues>({ user: null, isAuth: true });
 
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -29,7 +22,8 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <UserContext.Provider
       value={{
-        isAuth: data?.isAuth,
+        // isAuth: data?.isAuth,
+        isAuth: true,
         user: data?.user,
       }}
     >

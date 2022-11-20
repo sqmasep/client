@@ -8,6 +8,7 @@ import { io } from "socket.io-client";
 import App from "./App";
 import { CountryProvider } from "./contexts/CountryContext";
 import UserProvider from "./contexts/UserContext";
+import theme from "./theme";
 import trpc from "./trpc";
 
 export let token: string =
@@ -26,39 +27,6 @@ const trpcClient = trpc.createClient({
       }),
     }),
   ],
-});
-
-export const socket = io("http://localhost:4321");
-
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: "#FE3D3D",
-    },
-  },
-  typography: {
-    fontFamily: "Readex Pro",
-  },
-  components: {
-    MuiButton: {
-      defaultProps: {
-        variant: "contained",
-      },
-    },
-    MuiContainer: {
-      defaultProps: {
-        fixed: true,
-        maxWidth: "xl",
-      },
-    },
-    MuiStack: {
-      defaultProps: {
-        direction: "row",
-        alignItems: "center",
-      },
-    },
-  },
 });
 
 root.render(

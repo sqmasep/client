@@ -6,8 +6,11 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  Paper,
   Select,
+  Stack,
   TextField,
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -54,42 +57,54 @@ const Signup: React.FC = () => {
         }) => {
           return (
             <Form onSubmit={handleSubmit}>
-              {form.map(el => (
-                <Field
-                  key={el.name}
-                  as={TextField}
-                  error={touched[el.name] && !!errors[el.name]}
-                  helperText={touched[el.name] && errors[el.name]}
-                  label={el.label}
-                  name={el.name}
-                />
-              ))}
-              <FormControl>
-                <InputLabel id='select-country-label'>
-                  Country of start
-                </InputLabel>
-                <Select
-                  labelId='select-country-label'
-                  id='select-country'
-                  label='Country of start'
-                  value={values.originLocation}
-                  onBlur={handleBlur}
-                  name='originLocation'
-                  onChange={handleChange}
-                >
-                  {selectCountriesOptions?.map(country => (
-                    <MenuItem value={country.code} key={country.name}>
-                      <Chip
-                        avatar={<Avatar src={country.flag} />}
-                        label={country.name}
-                        variant='outlined'
-                      />
-                    </MenuItem>
+              <Paper sx={{ p: 4, width: "50%", mx: "auto" }}>
+                <Stack direction='column' spacing={2}>
+                  <Typography variant='h2' component='h1' mb={4}>
+                    Sign up
+                  </Typography>
+                  {form.map(el => (
+                    <Field
+                      key={el.name}
+                      as={TextField}
+                      error={touched[el.name] && !!errors[el.name]}
+                      helperText={touched[el.name] && errors[el.name]}
+                      label={el.label}
+                      name={el.name}
+                      fullWidth
+                    />
                   ))}
-                </Select>
-                {touched.originLocation && errors.originLocation}
-              </FormControl>
-              <Button type='submit'>yes</Button>
+                  <FormControl fullWidth>
+                    <InputLabel id='select-country-label'>
+                      Country of start
+                    </InputLabel>
+                    <Select
+                      labelId='select-country-label'
+                      id='select-country'
+                      label='Country of start'
+                      value={values.originLocation}
+                      onBlur={handleBlur}
+                      name='originLocation'
+                      onChange={handleChange}
+                      error={touched.originLocation && !!errors.originLocation}
+                      fullWidth
+                    >
+                      {selectCountriesOptions?.map(country => (
+                        <MenuItem value={country.code} key={country.name}>
+                          <Chip
+                            avatar={<Avatar src={country.flag} />}
+                            label={country.name}
+                            variant='outlined'
+                          />
+                        </MenuItem>
+                      ))}
+                    </Select>
+                    {touched.originLocation && errors.originLocation}
+                  </FormControl>
+                  <Button type='submit' fullWidth>
+                    Sign up
+                  </Button>
+                </Stack>
+              </Paper>
             </Form>
           );
         }}

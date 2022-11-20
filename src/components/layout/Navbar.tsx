@@ -1,15 +1,16 @@
 import {
   Avatar,
+  Badge,
   Box,
   Button,
   Container,
+  IconButton,
   Link,
   Stack,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { socket } from "../..";
 import { useUser } from "../../contexts/UserContext";
 import NbUsers from "../ui/NbUsers";
 import { Notifications } from "@mui/icons-material";
@@ -30,20 +31,23 @@ const Navbar: React.FC = () => {
               <Avatar />
             </RouterLink>
           ) : (
-            <>
-              <Stack spacing={2}>
-                <Button
-                  variant='outlined'
-                  LinkComponent={RouterLink}
-                  to='/put-on-your-red-blazer'
-                >
-                  Login
-                </Button>
-                <Button LinkComponent={RouterLink} to='/become-a-bad-guy'>
-                  Sign Up
-                </Button>
-              </Stack>
-            </>
+            <Stack spacing={2}>
+              <IconButton>
+                <Badge color='primary' badgeContent={1}>
+                  <Notifications />
+                </Badge>
+              </IconButton>
+              <Button
+                variant='outlined'
+                LinkComponent={RouterLink}
+                to='/put-on-your-red-blazer'
+              >
+                Login
+              </Button>
+              <Button LinkComponent={RouterLink} to='/become-a-bad-guy'>
+                Sign Up
+              </Button>
+            </Stack>
           )}
         </Stack>
       </Stack>

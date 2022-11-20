@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Fab } from "@mui/material";
 import { PeopleAlt } from "@mui/icons-material";
 import useToggle from "../../hooks/useToggle";
-import { socket } from "../..";
+import socket from "../../socket";
 
 const MessageBox: React.FC = () => {
   const [isOpen, toggle] = useToggle();
