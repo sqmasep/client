@@ -1,4 +1,21 @@
 import { createTheme } from "@mui/material";
+import React from "react";
+
+declare module "@mui/material/styles" {
+  interface TypographyVariant {
+    title: React.CSSProperties;
+  }
+
+  interface TypographyVariantOptions {
+    title?: React.CSSProperties;
+  }
+}
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    title: true;
+  }
+}
 
 const theme = createTheme({
   palette: {
@@ -9,6 +26,11 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Readex Pro",
+    title: {
+      color: "#fff",
+      fontFamily: "IM FELL French Canon",
+      fontSize: "2rem",
+    },
   },
   components: {
     MuiButton: {

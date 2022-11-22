@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { createContext, useCallback, useContext } from "react";
 import trpc from "../trpc";
-import axios from "axios";
 
 interface CountryContext {
   countries: any[];
   countryByCode: (code: string) => unknown;
   countriesByCodes: (codes: string[]) => unknown;
+  getFlag: (country: unknown) => string | undefined;
 }
 
 const CountryContext = createContext<CountryContext>({
   countries: [],
   countryByCode: () => {},
   countriesByCodes: () => {},
+  getFlag: () => "",
 });
 
 export const CountryProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -23,18 +24,16 @@ export const CountryProvider: React.FC<{ children: React.ReactNode }> = ({
     staleTime: Infinity,
   });
 
-  // get corresponding/filtered countries data from an API via code
-  const countryByCode = useCallback(
-    (code: string) =>
-      availableCountries?.find(country => country.cca2 === code),
-    [availableCountries]
-  );
+  // get corresponding/found country data from an API via code
+  const countryByCode = (code: string) =>
+    availableCountries?.find(country => country.cca2 === code);
 
-  const countriesByCodes = useCallback(
-    (codes: string[]) =>
-      availableCountries?.filter(country => codes.includes(country.cca2)),
-    [availableCountries]
-  );
+  // get corresponding/filtered countries data from an API via code
+  const countriesByCodes = (codes: string[]) =>
+    availableCountries?.filter(country => codes.includes(country.cca2));
+
+  // get svg flag from country
+  const getFlag = country => country?.flags?.svg;
 
   return (
     <CountryContext.Provider
@@ -42,6 +41,7 @@ export const CountryProvider: React.FC<{ children: React.ReactNode }> = ({
         countries: availableCountries,
         countryByCode,
         countriesByCodes,
+        getFlag,
       }}
     >
       {children}

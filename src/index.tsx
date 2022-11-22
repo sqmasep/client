@@ -12,8 +12,7 @@ import theme from "./theme";
 import trpc from "./trpc";
 
 export let token: string =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YTJhZmFhZDJiYjE2OWM2ZWQyYTdmIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIn0sImlhdCI6MTY2ODk4MzQ2Nn0.CSXYhXZZrWl8JR6Z-wn6iiyd14FklErmZ7Sy_JS5HkE";
-
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3Y2UzNzY4NGFhMGRiNjhjNDljYmZlIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIn0sImlhdCI6MTY2OTEyOTA4Nn0.xHPWWbeHU47ISMDYCzkzdP77sJqxCDdvjYyOitlD_og";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

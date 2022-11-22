@@ -24,7 +24,6 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     <UserContext.Provider
       value={{
         isAuth: data?.isAuth,
-        // isAuth: true,
         user: data?.user,
       }}
     >

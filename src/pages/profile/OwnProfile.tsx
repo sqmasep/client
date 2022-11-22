@@ -16,7 +16,7 @@ const OwnProfile: React.FC = () => {
         emptyIcon={<FavoriteBorder />}
         value={user?.status.health / 100}
         max={10}
-        precision={0.01}
+        precision={0.1}
       />
     </>
   );
