@@ -14,7 +14,7 @@ const Crime: React.FC<CrimeProps> = ({ crime }) => {
   const flagUrl = getFlag(countryByCode(crime.location));
 
   return (
-    <MotionBox>
+    <MotionBox whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
       <Box
         sx={{
           position: "relative",
@@ -40,7 +40,7 @@ const Crime: React.FC<CrimeProps> = ({ crime }) => {
           />
         )}
       </Box>
-    </MotiBox>
+    </MotionBox>
   );
 };
 
