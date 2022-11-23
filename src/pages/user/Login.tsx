@@ -12,18 +12,19 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { login } from "../../../../server/data/formSchemas";
 import { useUser } from "../../contexts/UserContext";
+import { useToken } from "../../contexts/TokenContext";
 
 const Login: React.FC = () => {
+  const { user } = useUser();
+  const { setToken } = useToken();
+
   const utils = trpc.useContext();
   const mutation = trpc.user.login.useMutation({
     onSuccess: data => {
-      console.log("success:!:!: ", data);
-      // setToken:
-      //
+      setToken(data.token);
       utils.user.getInfos.invalidate();
     },
   });
-  const {} = useUser();
   const logIn = ({ password, username }) => {
     mutation.mutate({ password, username });
   };
@@ -38,6 +39,8 @@ const Login: React.FC = () => {
         {({ values, errors, isSubmitting, touched }) => {
           return (
             <Form>
+              <pre>{JSON.stringify(user, null, 2)}</pre>
+
               <Paper sx={{ p: 4, width: "50%", mx: "auto" }}>
                 <Stack direction='column' spacing={2}>
                   <Typography variant='h2' component='h1' mb={4}>

@@ -5,7 +5,7 @@ import Crime from "../components/ui/Crime";
 import { useUser } from "../contexts/UserContext";
 
 const CrimeList: React.FC = () => {
-  const { data: crimes } = trpc.crime.getAll.useQuery(undefined, {
+  const { data: crimes } = trpc.crime.all.useQuery(undefined, {
     staleTime: Infinity,
   });
 
@@ -18,12 +18,12 @@ const CrimeList: React.FC = () => {
       <Typography variant='title' component='h1'>
         Sors la Thompson, sq
       </Typography>
-      <Typography>CRIMES</Typography>
+      <Typography variant='category'>CRIMES</Typography>
 
       <Container>
         <Grid container spacing={4}>
           {crimes?.map(crime => (
-            <Grid item xs={12} sm={6} xl={4}>
+            <Grid key={crime._id} item xs={12} sm={6} xl={4}>
               <Crime crime={crime} />
             </Grid>
           ))}

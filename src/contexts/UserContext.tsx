@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
-import { token } from "..";
 import useLocalStorage from "../hooks/useLocalStorage";
 import trpc from "../lib/trpc";
+import { useToken } from "./TokenContext";
 
 interface UserValues {
   isAuth: boolean | undefined;
@@ -13,10 +13,9 @@ const UserContext = createContext<UserValues>({ user: null, isAuth: true });
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [a, setA] = useLocalStorage("token", token);
-  console.log("token a: ", a);
-  const { data } = trpc.user.getInfos.useQuery(a, {
-    enabled: !!a,
+  const { token } = useToken();
+  const { data } = trpc.user.getInfos.useQuery(token, {
+    enabled: !!token,
     staleTime: Infinity,
   });
 

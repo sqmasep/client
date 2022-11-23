@@ -13,9 +13,11 @@ const Card = styled(ButtonBase)(({ theme }) => ({
   border: "2px solid #444",
   position: "relative",
   minHeight: "25ch",
-  p: 2,
+  padding: 2,
   borderRadius: 2,
   overflow: "hidden",
+  justifyContent: "start",
+  alignItems: "start",
 }));
 const MotionBox = motion(Card);
 
@@ -26,7 +28,7 @@ const Crime: React.FC<CrimeProps> = ({ crime }) => {
 
   return (
     <MotionBox whileHover={{ scale: 1.02 }} whileTap={{ scale: 1.01 }}>
-      <Box>
+      <Box sx={{ p: 2 }}>
         <Typography>{crime.name.fr.toUpperCase()}</Typography>
         {crime.location !== null &&
           crime.location !== user?.currentLocation && <>disabled</>}

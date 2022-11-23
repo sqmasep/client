@@ -4,16 +4,19 @@ import React from "react";
 declare module "@mui/material/styles" {
   interface TypographyVariant {
     title: React.CSSProperties;
+    category: React.CSSProperties;
   }
 
   interface TypographyVariantOptions {
     title?: React.CSSProperties;
+    category?: React.CSSProperties;
   }
 }
 
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     title: true;
+    category: true;
   }
 }
 
@@ -30,6 +33,11 @@ const theme = createTheme({
       color: "#fff",
       fontFamily: "IM FELL French Canon",
       fontSize: "2rem",
+    },
+    category: {
+      color: "#fff",
+      fontFamily: "Impact",
+      fontSize: "1.25rem",
     },
   },
   components: {
