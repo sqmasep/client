@@ -1,31 +1,36 @@
-import { Box, Typography } from "@mui/material";
+import { Box, ButtonBase, styled, Typography } from "@mui/material";
 import React from "react";
 import { CrimeListInterface } from "../../../../server/dbSchemas/CrimeList";
 import { useCountry } from "../../contexts/CountryContext";
 import { motion } from "framer-motion";
+import { useUser } from "../../contexts/UserContext";
 interface CrimeProps {
   crime: CrimeListInterface;
 }
 
-const MotionBox = motion(Box);
+const Card = styled(ButtonBase)(({ theme }) => ({
+  width: "100% !important",
+  border: "2px solid #444",
+  position: "relative",
+  minHeight: "25ch",
+  p: 2,
+  borderRadius: 2,
+  overflow: "hidden",
+}));
+const MotionBox = motion(Card);
 
 const Crime: React.FC<CrimeProps> = ({ crime }) => {
+  const { user } = useUser();
   const { countries, getFlag, countryByCode } = useCountry();
   const flagUrl = getFlag(countryByCode(crime.location));
 
   return (
-    <MotionBox whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-      <Box
-        sx={{
-          position: "relative",
-          minHeight: "25ch",
-          p: 2,
-          border: "2px solid #333",
-          borderRadius: 2,
-          overflow: "hidden",
-        }}
-      >
+    <MotionBox whileHover={{ scale: 1.02 }} whileTap={{ scale: 1.01 }}>
+      <Box>
         <Typography>{crime.name.fr.toUpperCase()}</Typography>
+        {crime.location !== null &&
+          crime.location !== user?.currentLocation && <>disabled</>}
+
         {crime.location && (
           <img
             style={{

@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 import { token } from "..";
 import useLocalStorage from "../hooks/useLocalStorage";
-import trpc from "../trpc";
+import trpc from "../lib/trpc";
 
 interface UserValues {
   isAuth: boolean | undefined;
-  user: unknown;
+  user: Record<string, any> | null;
 }
 
 const UserContext = createContext<UserValues>({ user: null, isAuth: true });

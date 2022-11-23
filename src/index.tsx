@@ -9,10 +9,10 @@ import App from "./App";
 import { CountryProvider } from "./contexts/CountryContext";
 import UserProvider from "./contexts/UserContext";
 import theme from "./theme";
-import trpc from "./trpc";
+import trpc from "./lib/trpc";
 
 export let token: string =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3Y2UzNzY4NGFhMGRiNjhjNDljYmZlIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIn0sImlhdCI6MTY2OTEyOTA4Nn0.xHPWWbeHU47ISMDYCzkzdP77sJqxCDdvjYyOitlD_og";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3Y2UzNzY4NGFhMGRiNjhjNDljYmZlIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIn0sImlhdCI6MTY2OTE5MTI5M30.Ccp1JzTAMhkx-IYO9zJMQEnvFumX1jQZ-nHllrdrDCM";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
-import trpc from "../trpc";
+import trpc from "../lib/trpc";
 
 const Home: React.FC = () => {
   trpc.user.test.useQuery();

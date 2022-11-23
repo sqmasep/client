@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { createContext, useCallback, useContext } from "react";
-import trpc from "../trpc";
+import trpc from "../lib/trpc";
 
 interface CountryContext {
   countries: any[];

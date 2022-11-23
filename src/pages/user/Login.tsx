@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import trpc from "../../trpc";
+import trpc from "../../lib/trpc";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { login } from "../../../../server/data/formSchemas";

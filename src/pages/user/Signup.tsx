@@ -15,7 +15,7 @@ import {
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import trpc from "../../trpc";
+import trpc from "../../lib/trpc";
 import { createUser } from "../../../../server/data/formSchemas";
 import { useCountry } from "../../contexts/CountryContext";
 
