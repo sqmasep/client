@@ -31,5 +31,5 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export default UserProvider;
 export const useUser = () => useContext(UserContext);
+export default UserProvider;

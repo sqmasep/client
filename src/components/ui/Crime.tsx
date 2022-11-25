@@ -11,9 +11,9 @@ interface CrimeProps {
 
 const Card = styled(ButtonBase)(({ theme }) => ({
   width: "100% !important",
-  border: "2px solid #444",
-  position: "relative",
   minHeight: "25ch",
+  position: "relative",
+  border: "2px solid #444",
   padding: 2,
   borderRadius: 2,
   overflow: "hidden",
@@ -28,7 +28,7 @@ const Crime: React.FC<CrimeProps> = ({ crime }) => {
   const flagUrl = getFlag(countryByCode(crime.location));
 
   return (
-    <MotionBox whileHover={{ scale: 1.02 }} whileTap={{ scale: 1.01 }}>
+    <MotionBox whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
       <Box sx={{ p: 2 }}>
         <Typography>{crime.name.fr.toUpperCase()}</Typography>
         {crime.location !== null &&

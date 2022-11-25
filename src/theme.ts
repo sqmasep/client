@@ -20,7 +20,16 @@ declare module "@mui/material/Typography" {
   }
 }
 
-const theme = createTheme({
+const defaultUI = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#fe3d3d",
+    },
+  },
+});
+
+const componentTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
@@ -60,4 +69,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export default { ...defaultUI, ...componentTheme };

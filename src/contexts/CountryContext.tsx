@@ -16,7 +16,7 @@ const CountryContext = createContext<CountryContext>({
   getFlag: () => "",
 });
 
-export const CountryProvider: React.FC<{ children: React.ReactNode }> = ({
+const CountryProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   // get restricted countries from server
@@ -50,3 +50,4 @@ export const CountryProvider: React.FC<{ children: React.ReactNode }> = ({
 };
 
 export const useCountry = () => useContext(CountryContext);
+export default CountryProvider;

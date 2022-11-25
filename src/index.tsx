@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import TokenProvider from "./contexts/TokenContext";
 import App from "./App";
+import SettingsProvider from "./contexts/SettingsContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -10,8 +11,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Router>
-    <TokenProvider>
-      <App />
-    </TokenProvider>
+    <SettingsProvider>
+      <TokenProvider>
+        <App />
+      </TokenProvider>
+    </SettingsProvider>
   </Router>
 );

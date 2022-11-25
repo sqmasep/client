@@ -16,7 +16,7 @@ interface TokenProviderInterface {
 }
 
 const TokenProvider: React.FC<TokenProviderInterface> = ({ children }) => {
-  const [token, setToken] = useLocalStorage("mafia-token", "");
+  const [token, setToken] = useLocalStorage("mafia-rp-token", "");
 
   return (
     <TokenContext.Provider value={{ token, setToken }}>

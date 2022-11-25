@@ -19,11 +19,12 @@ import UserProfile from "./pages/profile/UserProfile";
 import OwnProfile from "./pages/profile/OwnProfile";
 import trpc from "./lib/trpc";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { CountryProvider } from "./contexts/CountryContext";
+import CountryProvider from "./contexts/CountryContext";
 import theme from "./theme";
 import { httpBatchLink } from "@trpc/react-query";
 import { useToken } from "./contexts/TokenContext";
 import { AnimatePresence, motion, Variants } from "framer-motion";
+import { useSettings } from "./contexts/SettingsContext";
 
 const queryClient = new QueryClient();
 
@@ -36,14 +37,15 @@ const page: Variants = {
 const AnimatedPage: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const { animations } = useSettings();
+
   return (
-    <AnimatePresence mode='wait'>
+    <AnimatePresence mode={animations ? "wait" : "popLayout"}>
       <motion.div
-        key={Math.random()}
-        variants={page}
-        initial='hidden'
-        animate='show'
-        exit='exit'
+        variants={animations ? page : undefined}
+        initial={animations ? "hidden" : undefined}
+        animate={animations ? "show" : undefined}
+        exit={animations ? "exit" : undefined}
         transition={{ duration: 0.5, type: "spring" }}
       >
         {children}

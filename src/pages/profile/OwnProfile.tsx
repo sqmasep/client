@@ -1,4 +1,11 @@
-import { LinearProgress, Rating, Stack, Typography } from "@mui/material";
+import {
+  FormControlLabel,
+  LinearProgress,
+  Rating,
+  Stack,
+  Switch,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { useUser } from "../../contexts/UserContext";
 import {
@@ -9,10 +16,14 @@ import {
   Psychology,
   PsychologyOutlined,
 } from "@mui/icons-material";
+import { useSettings } from "../../contexts/SettingsContext";
+import useToggle from "../../hooks/useToggle";
 
 const OwnProfile: React.FC = () => {
   const { user } = useUser();
+  const { animations, setAnimations } = useSettings();
 
+  console.log(animations);
   return (
     <>
       own profile
@@ -24,6 +35,7 @@ const OwnProfile: React.FC = () => {
           emptyIcon={<FavoriteBorder />}
           value={user?.status.health / 10}
           max={10}
+          color=''
           precision={0.1}
         />
         <Typography>Health {user?.status.health}</Typography>
@@ -57,6 +69,15 @@ const OwnProfile: React.FC = () => {
           <Typography>{user?.money.bank}</Typography>
         </Stack>
       </Stack>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={animations}
+            onChange={e => setAnimations(e.target.checked)}
+          />
+        }
+        label='Animations'
+      />
     </>
   );
 };
