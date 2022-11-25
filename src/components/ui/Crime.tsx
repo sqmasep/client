@@ -4,6 +4,7 @@ import { CrimeListInterface } from "../../../../server/dbSchemas/CrimeList";
 import { useCountry } from "../../contexts/CountryContext";
 import { motion } from "framer-motion";
 import { useUser } from "../../contexts/UserContext";
+
 interface CrimeProps {
   crime: CrimeListInterface;
 }

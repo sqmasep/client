@@ -23,7 +23,7 @@ specifiers:
   css-loader: ^6.7.1
   date-fns: ^2.29.3
   formik: ^2.2.9
-  framer-motion: ^7.6.6
+  framer-motion: ^7.6.12
   react: ^18.2.0
   react-dom: ^18.2.0
   react-router-dom: ^6.4.3
@@ -50,7 +50,7 @@ dependencies:
   css-loader: 6.7.1_webpack@5.74.0
   date-fns: 2.29.3
   formik: 2.2.9_react@18.2.0
-  framer-motion: 7.6.6_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 7.6.12_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
@@ -2808,8 +2808,8 @@ packages:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
 
-  /framer-motion/7.6.6_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-7ti5mEzhTRBFCMlKs8Zxu9dWtVattpj2jPCNc4jaz4d7bDFekClALaBzmi1pGOKzsOWJsKMeV5ckIkD1DLI9lw==}
+  /framer-motion/7.6.12_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Xm1jPB91v6vIr9b+V3q6c96sPzU1jWdvN+Mv4CvIAY23ZIezGNIWxWNGIWj1We0CZ8SSOQkttz8921M10TQjXg==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0

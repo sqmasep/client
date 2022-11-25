@@ -23,8 +23,34 @@ import { CountryProvider } from "./contexts/CountryContext";
 import theme from "./theme";
 import { httpBatchLink } from "@trpc/react-query";
 import { useToken } from "./contexts/TokenContext";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
 const queryClient = new QueryClient();
+
+const page: Variants = {
+  hidden: { y: "10vh", opacity: 0 },
+  show: { y: 0, opacity: 1 },
+  exit: { y: "-20vh", opacity: 0, scale: 0.7, transition: { duration: 0.25 } },
+};
+
+const AnimatedPage: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  return (
+    <AnimatePresence mode='wait'>
+      <motion.div
+        key={Math.random()}
+        variants={page}
+        initial='hidden'
+        animate='show'
+        exit='exit'
+        transition={{ duration: 0.5, type: "spring" }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+};
 
 const App: React.FC = () => {
   const { token } = useToken();
@@ -74,13 +100,42 @@ const AppContent: React.FC = () => {
       <Routes>
         <Route path='/' element={<Home />} />
 
-        <Route path='/become-a-bad-guy' element={<SignIn />} />
+        <Route
+          path='/become-a-bad-guy'
+          element={
+            <AnimatedPage>
+              <SignIn />
+            </AnimatedPage>
+          }
+        />
         <Route
           path='/put-on-your-red-blazer'
-          element={isAuth ? <Navigate to='/profile' /> : <Login />}
+          element={
+            isAuth ? (
+              <Navigate to='/profile' />
+            ) : (
+              <AnimatedPage>
+                <Login />
+              </AnimatedPage>
+            )
+          }
         />
-        <Route path='/crimes' element={<CrimeList />} />
-        <Route path='/profile' element={<OwnProfile />} />
+        <Route
+          path='/crimes'
+          element={
+            <AnimatedPage>
+              <CrimeList />
+            </AnimatedPage>
+          }
+        />
+        <Route
+          path='/profile'
+          element={
+            <AnimatedPage>
+              <OwnProfile />
+            </AnimatedPage>
+          }
+        />
         <Route path='/profile/:username' element={<UserProfile />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
